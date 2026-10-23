@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaron's Space | What I'm Building with AI</title>
+  <meta name="description" content="A tour of the AI tools and software projects built by Aaron Whaley and The Agent Corporation." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="mode-myspace">
+
+  <!-- Floating View Mode Switcher -->
+  <div class="mode-switcher-bar" role="region" aria-label="Display mode controls">
+    <div class="mode-switcher-inner">
+      <span class="mode-label">View style:</span>
+      <button type="button" id="btn-myspace" class="mode-btn active" onclick="setViewMode('myspace')">
+        ★ 2005 Space Mode
+      </button>
+      <button type="button" id="btn-reader" class="mode-btn" onclick="setViewMode('reader')">
+        Clean Modern Reader
+      </button>
+      <button type="button" class="mode-btn print-btn" onclick="window.print()">
+        Print / Save PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Retro Top Banner & Nav -->
+  <header class="retro-topbar">
+    <div class="retro-topbar-main">
+      <div class="brand-left">
+        <span class="brand-logo">AaronSpace<span class="brand-sub">.com</span></span>
+        <span class="brand-tagline">a place for AI agents &amp; builders</span>
+      </div>
+      <div class="top-search-mock">
+        <label for="project-search" class="sr-only">Search Projects</label>
+        <input type="text" id="project-search" placeholder="Search Aaron's projects..." oninput="filterProjectsBySearch(this.value)" />
+        <button type="button" onclick="clearSearch()">Clear</button>
+      </div>
+      <div class="top-status-right">
+        The Agent Corporation &bull; Prospect, KY (America/New_York)
+      </div>
+    </div>
+    <nav class="retro-navbar" aria-label="Page sections">
+      <a href="#about">About Aaron</a>
+      <span class="sep">|</span>
+      <a href="#top8">Top 8 Projects</a>
+      <span class="sep">|</span>
+      <a href="#bulletins">All 15 Projects</a>
+      <span class="sep">|</span>
+      <a href="#live-cloud">Live Cloud &amp; Relays</a>
+      <span class="sep">|</span>
+      <a href="#wall">Recent Activity Wall</a>
+      <span class="sep">|</span>
+      <a href="https://github.com/The-Agent-Corporation" target="_blank" rel="noopener">GitHub Org</a>
+    </nav>
+  </header>
+
+  <!-- Modern Reader Header (visible in Clean Modern Reader mode) -->
+  <header class="modern-hero">
+    <div class="modern-hero-inner">
+      <p class="modern-eyebrow">Aaron Whaley &bull; The Agent Corporation &bull; Updated October 22, 2026</p>
+      <h1>What I'm Building with AI</h1>
+      <p class="modern-subtitle">
+        A plain-English guide to the AI software, legal tools, and multi-agent systems I build in Prospect, Kentucky.
+      </p>
+    </div>
+  </header>
+
+  <main class="page-container">
+    <!-- Left Column: Profile, Contact, URL, Interests -->
+    <aside class="left-column">
+
+      <!-- Profile Card -->
+      <section class="box profile-box">
+        <h1 class="profile-name">Aaron Whaley</h1>
+        <div class="profile-grid">
+          <div class="avatar-wrap">
+            <!-- Retro Pixel/Vector Scales + Robot Avatar -->
+            <svg class="avatar-svg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Aaron Whaley retro pixel emblem">
+              <rect width="140" height="140" fill="#102a56"/>
+              <rect x="6" y="6" width="128" height="128" fill="#1d4487" stroke="#6699cc" stroke-width="2"/>
+              <!-- Pixel sun/glow -->
+              <circle cx="70" cy="54" r="34" fill="#2959a8"/>
+              <!-- Scales of Justice + Agent visor -->
+              <rect x="67" y="24" width="6" height="62" fill="#ffcc66"/>
+              <rect x="34" y="34" width="72" height="5" fill="#ffcc66"/>
+              <polygon points="40,39 28,62 52,62" fill="none" stroke="#ffcc66" stroke-width="3"/>
+              <rect x="26" y="62" width="28" height="5" rx="2" fill="#ffcc66"/>
+              <polygon points="100,39 88,62 112,62" fill="none" stroke="#ffcc66" stroke-width="3"/>
+              <rect x="86" y="62" width="28" height="5" rx="2" fill="#ffcc66"/>
+              <rect x="50" y="84" width="40" height="7" fill="#ffcc66"/>
+              <!-- Terminal badge at bottom -->
+              <rect x="16" y="100" width="108" height="24" rx="3" fill="#091936" stroke="#7fb2f0" stroke-width="1.5"/>
+              <text x="70" y="116" text-anchor="middle" fill="#66ff99" font-family="monospace" font-size="11" font-weight="bold">&gt; AGENT_CORP // KY</text>
+            </svg>
+            <div class="online-indicator" title="Active in October 2026">
+              <span class="online-dot"></span> ONLINE NOW!
+            </div>
+          </div>
+          <div class="profile-meta">
+            <p class="quote-line">"Law by day. AI software factory by night."</p>
+            <ul class="meta-list">
+              <li><strong>Role:</strong> Personal-Injury Lawyer &amp; AI Builder</li>
+              <li><strong>Location:</strong> Prospect / Louisville, Kentucky</li>
+              <li><strong>Org:</strong> The Agent Corporation</li>
+              <li><strong>Active Projects:</strong> 15 repos &amp; local builds</li>
+              <li><strong>Last Login:</strong> Oct 22, 2026 (EDT)</li>
+            </ul>
+            <p class="mood-line">
+              <strong>Mood:</strong> Shipping checkpoints &amp; reviewing PRs 🚀<br/>
+              <strong>Currently Playing:</strong> The Neighbourhood (Nov 14 in Nashville) 🎸
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacting Aaron Box -->
+      <section class="box contact-box">
+        <h2 class="box-header blue-header">Quick Links &amp; Live Apps</h2>
+        <div class="contact-grid">
+          <a class="contact-action" href="https://verdict-intelligence.onrender.com" target="_blank" rel="noopener">
+            ⚖️ Launch Jury Trial Search
+          </a>
+          <a class="contact-action" href="https://limitswitch-cloud.onrender.com" target="_blank" rel="noopener">
+            🎛️ Open LimitSwitch Cloud
+          </a>
+          <a class="contact-action" href="https://transcript-studio-l79b.onrender.com" target="_blank" rel="noopener">
+            🎙️ Transcript Studio (Invite)
+          </a>
+          <a class="contact-action" href="https://github.com/The-Agent-Corporation" target="_blank" rel="noopener">
+            💻 The Agent Corp GitHub
+          </a>
+          <a class="contact-action" href="https://github.com/aaron-agent-corporation/roscoe-companion" target="_blank" rel="noopener">
+            🤝 Roscoe Companion (MIT)
+          </a>
+          <a class="contact-action" href="https://github.com/The-Agent-Corporation/multi-agent-review" target="_blank" rel="noopener">
+            🔍 Multi-Agent Review Repo
+          </a>
+        </div>
+      </section>
+
+      <!-- Space URL Box -->
+      <section class="box url-box">
+        <div class="url-title">Aaron's Portfolio URL:</div>
+        <div class="url-value" id="current-page-url">https://aaron-myspace.onrender.com</div>
+        <div class="url-sub">Share this link anytime someone asks: "Wait, what AI programs do you build?"</div>
+      </section>
+
+      <!-- Interests Table -->
+      <section class="box interests-box">
+        <h2 class="box-header blue-header">Aaron's Interests &amp; Stack</h2>
+        <table class="interests-table">
+          <tbody>
+            <tr>
+              <th>General</th>
+              <td>
+                Personal-injury law, building practical software without a CS degree, making AI agents show their receipts, voice-first tools that let you talk and point instead of type, and keeping humans in control of every important decision.
+              </td>
+            </tr>
+            <tr>
+              <th>How I Build</th>
+              <td>
+                I direct teams of AI coding agents (Claude Code, Codex, Cursor, OpenClaw) using structured plans, checkpoints, and multi-model adversarial code review so different models check each other's work before anything ships.
+              </td>
+            </tr>
+            <tr>
+              <th>Tech Stack</th>
+              <td>
+                Python, TypeScript, React, Go, Rust + Tauri (desktop apps), Electron, Postgres, Supabase, Whisper speech-to-text, Render cloud services, and Model Context Protocol (MCP) tools.
+              </td>
+            </tr>
+            <tr>
+              <th>Core Rule</th>
+              <td>
+                <strong>Traceable truth &amp; human gates:</strong> Whether it is a legal memo in Roscoe, a computer fix in AI IT, or a drafted email in Email Manager, the AI does the heavy lifting and gathers the evidence, and a person approves the final step.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Repo Visibility Legend -->
+      <section class="box legend-box">
+        <h2 class="box-header blue-header">Link &amp; Repo Guide</h2>
+        <div class="legend-body">
+          <p><span class="badge badge-live">● Live Web App</span> Publicly reachable on Render right now.</p>
+          <p><span class="badge badge-public">Public Repo</span> Open-source on GitHub; click to browse the code.</p>
+          <p><span class="badge badge-private">Private Repo</span> Private codebase on GitHub (kept private to protect firm workflows).</p>
+          <p><span class="badge badge-local">Mac Workspace</span> Built and run locally on Aaron's Mac studio setup.</p>
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- Right Column: Elevator Pitch, Top 8, Full Project Bulletins, Cloud Box, Wall -->
+    <div class="right-column">
+
+      <!-- Status Banner -->
+      <div class="network-banner" id="about">
+        <span class="network-main">Aaron Whaley is building 15 AI software projects</span>
+        <span class="network-sub">Snapshot verified from source code &amp; commits on October 22, 2026</span>
+      </div>
+
+      <!-- Blurbs / Elevator Pitch -->
+      <section class="box blurb-box">
+        <h2 class="box-header orange-header">Aaron's Blurbs (The 30-Second Elevator Pitch)</h2>
+        <div class="blurb-content">
+          <h3 class="blurb-subheading">What to say when people ask "What do you work on?"</h3>
+          <blockquote class="elevator-pitch">
+            "I'm a personal-injury lawyer in Kentucky who builds AI software. My main project is <strong>Roscoe</strong>, an AI paralegal for personal-injury law firms that organizes case files, sorts incoming mail, and drafts source-checked legal research with an attorney approving every key step. Around Roscoe, I've built a searchable database of past jury verdicts, a voice-and-pointing document editor, a courtroom transcript studio, an AI IT department for small offices, and a suite of tools that help me coordinate teams of AI coding agents."
+          </blockquote>
+
+          <h3 class="blurb-subheading">Who I'd like to meet:</h3>
+          <p>
+            Trial lawyers tired of drowning in paperwork, small business owners who want AI that actually works safely, and fellow builders experimenting with voice interfaces and multi-agent software factories.
+          </p>
+        </div>
+      </section>
+
+      <!-- Top 8 Projects -->
+      <section class="box top8-box" id="top8">
+        <h2 class="box-header orange-header">Aaron's Top 8 Projects</h2>
+        <p class="section-intro">
+           Aaron has <strong>15</strong> AI projects in his workspace. Here are the Top 8 flagship builds:
+        </p>
+
+        <div class="top8-grid">
+          <!-- 1: Roscoe -->
+          <a class="top8-card" href="#proj-roscoe">
+            <div class="top8-rank">#1 Flagship</div>
+            <div class="top8-icon icon-legal">⚖️</div>
+            <div class="top8-name">Roscoe</div>
+            <div class="top8-tag">AI Paralegal for PI Firms</div>
+            <span class="mini-pill pill-active">100 PRs in Oct</span>
+          </a>
+
+          <!-- 2: Jury Trial Search -->
+          <a class="top8-card" href="#proj-jury">
+            <div class="top8-rank">#2 Live App</div>
+            <div class="top8-icon icon-search">🏛️</div>
+            <div class="top8-name">Jury Trial Search</div>
+            <div class="top8-tag">Verdict Intelligence</div>
+            <span class="mini-pill pill-live">Live on Render</span>
+          </a>
+
+          <!-- 3: VoiceDocs -->
+          <a class="top8-card" href="#proj-voicedocs">
+            <div class="top8-rank">#3 Voice + AI</div>
+            <div class="top8-icon icon-voice">🗣️</div>
+            <div class="top8-name">VoiceDocs</div>
+            <div class="top8-tag">Talk &amp; Point Word Editor</div>
+            <span class="mini-pill pill-proto">Prototype</span>
+          </a>
+
+          <!-- 4: Transcript Studio -->
+          <a class="top8-card" href="#proj-transcript">
+            <div class="top8-rank">#4 Live App</div>
+            <div class="top8-icon icon-audio">🎧</div>
+            <div class="top8-name">Transcript Studio</div>
+            <div class="top8-tag">Speaker-Labeled Audio</div>
+            <span class="mini-pill pill-live">Live on Render</span>
+          </a>
+
+          <!-- 5: AI IT -->
+          <a class="top8-card" href="#proj-aiit">
+            <div class="top8-rank">#5 New Build</div>
+            <div class="top8-icon icon-it">🛡️</div>
+            <div class="top8-name">AI IT</div>
+            <div class="top8-tag">AI IT Dept for Small Offices</div>
+            <span class="mini-pill pill-active">Active Oct 22</span>
+          </a>
+
+          <!-- 6: LimitSwitch -->
+          <a class="top8-card" href="#proj-limitswitch">
+            <div class="top8-rank">#6 Live App</div>
+            <div class="top8-icon icon-keys">🎛️</div>
+            <div class="top8-name">LimitSwitch</div>
+            <div class="top8-tag">AI Quota &amp; Key Vault</div>
+            <span class="mini-pill pill-live">Desktop + Cloud</span>
+          </a>
+
+          <!-- 7: Memory System -->
+          <a class="top8-card" href="#proj-memory">
+            <div class="top8-rank">#7 Open Source</div>
+            <div class="top8-icon icon-brain">🧠</div>
+            <div class="top8-name">Memory System</div>
+            <div class="top8-tag">Long-Term Agent Memory</div>
+            <span class="mini-pill pill-public">Public Repo</span>
+          </a>
+
+          <!-- 8: Code-KG -->
+          <a class="top8-card" href="#proj-codekg">
+            <div class="top8-rank">#8 Open Source</div>
+            <div class="top8-icon icon-graph">🕸️</div>
+            <div class="top8-name">Code-KG</div>
+            <div class="top8-tag">Codebase Knowledge Graph</div>
+            <span class="mini-pill pill-public">Public Repo</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- All Projects by Category (Interactive Filter + Cards) -->
+      <section class="box bulletins-box" id="bulletins">
+        <h2 class="box-header orange-header">Aaron's Project Bulletins (All 15 Projects)</h2>
+
+        <div class="filter-bar" role="toolbar" aria-label="Filter projects by category">
+          <button type="button" class="filter-btn active" data-cat="all" onclick="filterCategory('all', this)">
+            All Projects (15)
+          </button>
+          <button type="button" class="filter-btn" data-cat="legal" onclick="filterCategory('legal', this)">
+            ⚖️ Law Firm Tools (4)
+          </button>
+          <button type="button" class="filter-btn" data-cat="business" onclick="filterCategory('business', this)">
+            💼 Business &amp; IT (2)
+          </button>
+          <button type="button" class="filter-btn" data-cat="agents" onclick="filterCategory('agents', this)">
+            🤖 Agent &amp; Builder Tools (7)
+          </button>
+          <button type="button" class="filter-btn" data-cat="personal" onclick="filterCategory('personal', this)">
+            🏡 Family &amp; Personal (2)
+          </button>
+        </div>
+
+        <!-- CATEGORY 1: FOR LAW FIRMS -->
+        <div class="category-group" data-group="legal">
+          <h3 class="category-banner">⚖️ For Law Firms &amp; Legal Practice</h3>
+
+          <!-- Roscoe -->
+          <article class="project-card" id="proj-roscoe" data-cat="legal">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">1. Roscoe</h4>
+                <p class="project-pitch">An AI paralegal for personal-injury law firms.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-active">Very Active &bull; Oct 22, 2026</span>
+                <span class="badge badge-private" title="github.com/aaron-agent-corporation/roscoe">🔒 Private Repo (aaron-agent-corporation/roscoe)</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Roscoe keeps an organized digital file for each case (FirmVault), sorts incoming mail and medical or court documents, and works through case tasks step by step. It is now learning to do Kentucky and Sixth Circuit legal research and draft memos where every single citation, quote, and case fact has to trace back to a verified source. An attorney approves the research plan and key checkpoints before anything moves forward.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Small personal-injury firms that drown in paperwork and want hours back without ever letting an AI invent facts or act unchecked.</div>
+              <div><strong>Current status:</strong> Flagship project. Over 100 pull requests merged in October 2026 alone; latest update Oct 22, 2026.</div>
+              <div><strong>For curious techies:</strong> Python and TypeScript, durable Postgres-backed workflows with mandatory human approval gates, an attorney web console, and adversarial multi-agent code review.</div>
+            </div>
+            <div class="project-links">
+              <span class="link-note">🔒 Codebase is private</span>
+              <a class="ext-link" href="https://github.com/aaron-agent-corporation/roscoe-companion" target="_blank" rel="noopener">
+                🔓 Open-Source Companion Repo (roscoe-companion) &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Jury Trial Search -->
+          <article class="project-card" id="proj-jury" data-cat="legal">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">2. Jury Trial Search (Verdict Intelligence)</h4>
+                <p class="project-pitch">Search past jury verdicts the way you search for flights.</p>
+              </div>
+              <div class="badge-row">
+                <a class="badge badge-live" href="https://verdict-intelligence.onrender.com" target="_blank" rel="noopener">● Live on Render</a>
+                <span class="badge badge-active">Active &bull; Oct 16, 2026</span>
+                <span class="badge badge-private" title="github.com/The-Agent-Corporation/jurytrialsearch">🔒 Private Repo</span>
+              </div>
+            </div>
+            <p class="project-body">
+              A searchable library of historical Kentucky trial outcomes. Lawyers can filter by case type, injury, county, and verdict range in a clean travel-style search interface, compare cases side by side, and ask an inline research assistant questions about the results. Case captions and outcomes are audited against the original court trial reports.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Trial lawyers valuing a claim or deciding whether to take a case to a jury. Knowing what real juries actually awarded is a huge advantage.</div>
+              <div><strong>Current status:</strong> Active subscriber alpha deployed live on Render. Last code update Oct 16, 2026.</div>
+              <div><strong>For curious techies:</strong> Python backend on Postgres with a semantic layer, travel-style filter UI, and an AI assistant that computes statistics over the exact filtered cohort.</div>
+            </div>
+            <div class="project-links">
+              <a class="ext-link primary-link" href="https://verdict-intelligence.onrender.com" target="_blank" rel="noopener">
+                🌐 Open Live App (verdict-intelligence.onrender.com) &rarr;
+              </a>
+              <span class="link-note">Repo: The-Agent-Corporation/jurytrialsearch (Private)</span>
+            </div>
+          </article>
+
+          <!-- VoiceDocs -->
+          <article class="project-card" id="proj-voicedocs" data-cat="legal">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">3. VoiceDocs</h4>
+                <p class="project-pitch">A browser document editor where you and an AI edit together by talking and pointing.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-proto">Working Prototype &bull; Oct 16, 2026</span>
+                <span class="badge badge-private" title="github.com/aaron-agent-corporation/voicedocs">🔒 Private Repo</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Open a draft or import a Microsoft Word file, point at a paragraph or highlight a phrase, and say out loud what you want changed. The AI proposes grounded edits right in the margin that you can accept or reject, and when you finish, it exports your original Word document back out with tracked changes intact.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Lawyers and professionals who spend all day revising letters, contracts, or briefs and find it faster to talk and point than to type.</div>
+              <div><strong>Current status:</strong> Working prototype with Word numbering and tracked-revisions export. Last update Oct 16, 2026.</div>
+              <div><strong>For curious techies:</strong> TypeScript web app with Yjs collaborative state, PDF reference viewer, voice capture + transcription, and Claude via Anthropic/OpenRouter with automatic model fallback.</div>
+            </div>
+            <div class="project-links">
+              <span class="link-note">Repo: aaron-agent-corporation/voicedocs (Private)</span>
+            </div>
+          </article>
+
+          <!-- Transcript Studio -->
+          <article class="project-card" id="proj-transcript" data-cat="legal">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">4. Transcript Studio</h4>
+                <p class="project-pitch">Turn courtroom, deposition, and meeting recordings into clean, speaker-labeled transcripts.</p>
+              </div>
+              <div class="badge-row">
+                <a class="badge badge-live" href="https://transcript-studio-l79b.onrender.com" target="_blank" rel="noopener">● Live on Render (Invite-Only)</a>
+                <span class="badge badge-proto">Working Tool &bull; Oct 11, 2026</span>
+                <span class="badge badge-private" title="github.com/aaron-agent-corporation/transcript-studio">🔒 Private Repo</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Drop in audio or video recordings and it transcribes them, separates and matches speaker voices across recordings, and gives you a synchronized review workspace where clicking any word seeks the audio to that exact second. When you're done reviewing, it exports a clean PDF with timestamps that link back to the recording.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Legal teams and researchers who need an accurate, searchable record of hearings, interviews, or multi-day recordings without paying rush court-reporter rates for every clip.</div>
+              <div><strong>Current status:</strong> Working local and cloud tool hosted on Render (invite-only login). Last update Oct 11, 2026.</div>
+              <div><strong>For curious techies:</strong> Python server, ffmpeg + Whisper large-v3-turbo (local or Modal cloud GPUs), Resemblyzer speaker embeddings, and a browser review queue.</div>
+            </div>
+            <div class="project-links">
+              <a class="ext-link primary-link" href="https://transcript-studio-l79b.onrender.com" target="_blank" rel="noopener">
+                🌐 Open Hosted App (transcript-studio-l79b.onrender.com) &rarr;
+              </a>
+              <span class="link-note">Repo: aaron-agent-corporation/transcript-studio (Private)</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- CATEGORY 2: BUSINESS & IT TOOLS -->
+        <div class="category-group" data-group="business">
+          <h3 class="category-banner">💼 Business &amp; Office Tools</h3>
+
+          <!-- AI IT -->
+          <article class="project-card" id="proj-aiit" data-cat="business">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">5. AI IT</h4>
+                <p class="project-pitch">An AI IT department in a box for small offices with no IT staff.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-active">Active Build &bull; Oct 22, 2026</span>
+                <span class="badge badge-local">💻 Mac Workspace (_general-business-projects/ai-it)</span>
+              </div>
+            </div>
+            <p class="project-body">
+              A lightweight helper runs on each Mac or Windows PC in an office and reports machine health, printer status, and errors to a central dashboard. When something breaks, the AI diagnoses the issue from real machine data and proposes a fix from a vetted catalog, running it only after a human clicks approve. It also verifies that built-in security (XProtect, Defender, firewall) and backups are actually working.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Small law firms, medical offices, and households that don't have a dedicated IT person and want problems caught early and fixed safely.</div>
+              <div><strong>Current status:</strong> Active build started in October 2026; Go agent, fix catalog, and web dashboard committed Oct 22, 2026.</div>
+              <div><strong>For curious techies:</strong> Go agent on macOS and Windows, osquery telemetry, ARP/mDNS/IPP network discovery, a canonical JSON procedure catalog with checkpoints, and a React dashboard.</div>
+            </div>
+          </article>
+
+          <!-- Email Manager -->
+          <article class="project-card" id="proj-email" data-cat="business">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">6. Email Manager</h4>
+                <p class="project-pitch">An AI-assisted inbox that sorts mail and drafts replies while keeping you in charge of sending.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-proto">Prototype &bull; Sep 16, 2026</span>
+                <span class="badge badge-private" title="github.com/aaron-agent-corporation/email-manager">🔒 Private Repo</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Connects to your email accounts, organizes messages into sensible folders, builds a directory of who writes to you, and prepares draft replies. Nothing ever goes out without your review, and you can create scoped links that let your AI agents read or draft mail within strict boundaries.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Busy professionals with overflowing inboxes who want AI triage and drafting without trusting a bot to hit Send on its own.</div>
+              <div><strong>Current status:</strong> Prototype with sender review, label routing, and scoped MCP links. Last update Sep 16, 2026.</div>
+              <div><strong>For curious techies:</strong> TypeScript monorepo (React web workspace, API server, Postgres, and a scoped MCP server for coding agents).</div>
+            </div>
+            <div class="project-links">
+              <span class="link-note">Repo: aaron-agent-corporation/email-manager (Private)</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- CATEGORY 3: TOOLS FOR WORKING WITH AI AGENTS -->
+        <div class="category-group" data-group="agents">
+          <h3 class="category-banner">🤖 Tools for Running &amp; Directing AI Agents</h3>
+
+          <!-- LimitSwitch -->
+          <article class="project-card" id="proj-limitswitch" data-cat="agents">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">7. LimitSwitch</h4>
+                <p class="project-pitch">One dashboard for all your AI subscriptions, usage caps, and API keys.</p>
+              </div>
+              <div class="badge-row">
+                <a class="badge badge-live" href="https://limitswitch-cloud.onrender.com" target="_blank" rel="noopener">● Live Cloud App</a>
+                <span class="badge badge-active">Working App &bull; Oct 16, 2026</span>
+                <span class="badge badge-local">💻 Mac + Render Cloud</span>
+              </div>
+            </div>
+            <p class="project-body">
+              When you use ChatGPT, Claude, Gemini, Grok, and multiple API accounts, it is hard to remember which account is capped and when quotas reset. LimitSwitch tracks availability across every provider in one place, stores API keys securely, and delivers keys into agent workspaces using single-use tickets so you never have to paste raw secrets into chat.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Power users and builders juggling multiple AI subscriptions and API keys across desktop and cloud agents.</div>
+              <div><strong>Current status:</strong> Working macOS desktop app and live Render cloud service managing 37+ API keys. Last update Oct 16, 2026.</div>
+              <div><strong>For curious techies:</strong> Tauri (Rust + React/TypeScript) on desktop, Dockerized cloud service on Render with persistent disk, and a portable agent setup skill.</div>
+            </div>
+            <div class="project-links">
+              <a class="ext-link primary-link" href="https://limitswitch-cloud.onrender.com" target="_blank" rel="noopener">
+                🌐 Open LimitSwitch Cloud (limitswitch-cloud.onrender.com) &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Conversational Memory System -->
+          <article class="project-card" id="proj-memory" data-cat="agents">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">8. Conversational Memory System</h4>
+                <p class="project-pitch">Long-term, resumable thread memory so AI assistants remember past work.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-active">Active &bull; Oct 22, 2026</span>
+                <a class="badge badge-public" href="https://github.com/The-Agent-Corporation/conversational-memory-system" target="_blank" rel="noopener">🔓 Public Repo</a>
+              </div>
+            </div>
+            <p class="project-body">
+              Most AI chats forget everything the moment you open a new window. This system treats conversation threads as durable objects, summarizes them in the background, groups related topics, and injects the right past context when a topic comes back up weeks later.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Anyone building or using personal AI assistants that need continuity across days and projects without blowing up model token costs.</div>
+              <div><strong>Current status:</strong> Active open-source repo; completed live OpenRouter model bake-offs and semantic summarizer pipeline in Oct 2026 (last push Oct 22, 2026).</div>
+              <div><strong>For curious techies:</strong> Python memory pipeline with sidecar summarization (defaulting to Claude Haiku 5.5 via OpenRouter), strict spend ledgers, and anchor-based surfacing.</div>
+            </div>
+            <div class="project-links">
+              <a class="ext-link primary-link" href="https://github.com/The-Agent-Corporation/conversational-memory-system" target="_blank" rel="noopener">
+                💻 View Public Code on GitHub (The-Agent-Corporation/conversational-memory-system) &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Code-KG -->
+          <article class="project-card" id="proj-codekg" data-cat="agents">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">9. Code-KG</h4>
+                <p class="project-pitch">A living map of a software codebase that AI coding agents read before making changes.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-proto">Working Tool &bull; Oct 21, 2026</span>
+                <a class="badge badge-public" href="https://github.com/The-Agent-Corporation/code-kg" target="_blank" rel="noopener">🔓 Public Repo (MIT)</a>
+              </div>
+            </div>
+            <p class="project-body">
+              AI coding agents often break things because they only look at one file at a time. Code-KG builds a structured knowledge graph of how functions, files, and architecture concepts connect across a repository, checks for drift on every git commit, and feeds that map to agents before they edit code.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Software builders who run AI coding agents and want fewer blind edits and better architectural awareness.</div>
+              <div><strong>Current status:</strong> Working open-source CLI and Claude plugin. Restored to clean knowledge-graph + Graft core on Oct 21, 2026.</div>
+              <div><strong>For curious techies:</strong> TypeScript CLI and MCP server using tree-sitter source intelligence across 20+ languages, wiki-link markdown nodes, embeddings search, and git hooks.</div>
+            </div>
+            <div class="project-links">
+              <a class="ext-link primary-link" href="https://github.com/The-Agent-Corporation/code-kg" target="_blank" rel="noopener">
+                💻 View Public Code on GitHub (The-Agent-Corporation/code-kg) &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- PointSpeak -->
+          <article class="project-card" id="proj-pointspeak" data-cat="agents">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">10. PointSpeak</h4>
+                <p class="project-pitch">Record yourself pointing at a web page and talking, then hand the briefing to a coding agent.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-proto">Early Prototype &bull; Oct 21, 2026</span>
+                <span class="badge badge-local">💻 Mac Workspace (_general-business-projects/pointspeak)</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Instead of typing a long paragraph explaining which button on a screen looks wrong, PointSpeak lets you click, draw on the page, and narrate out loud. It bundles your screenshots, cursor targets, and transcribed voice notes into a clean package that a coding agent can immediately understand and fix.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Non-traditional builders and product owners who want to show an AI agent what needs changing on screen.</div>
+              <div><strong>Current status:</strong> Early prototype; browser capture spike and local audio narration receiver updated Oct 21, 2026.</div>
+              <div><strong>For curious techies:</strong> Chrome Manifest V3 extension in TypeScript (@pointspeak/capture-core, annotator, handoff) paired with a local Python audio transcription receiver.</div>
+            </div>
+          </article>
+
+          <!-- VOICE Bridge -->
+          <article class="project-card" id="proj-voicebridge" data-cat="agents">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">11. VOICE Bridge</h4>
+                <p class="project-pitch">One continuous voice conversation across all of your AI coding projects.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-idea">Early Idea / Spec &bull; Oct 21, 2026</span>
+                <span class="badge badge-local">📄 Product Spec (_general-business-projects/voicebridge)</span>
+              </div>
+            </div>
+            <p class="project-body">
+              When you have five different projects running in different windows, keeping track of what each AI agent is asking is exhausting. VOICE Bridge is designed so you can ask out loud, "What's happening in Roscoe?" or "Tell VoiceDocs to export the file," and it routes your voice to the right project session safely.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Builders running many simultaneous Claude Code and Codex sessions who want a single voice switchboard.</div>
+              <div><strong>Current status:</strong> Detailed v1 Product Requirements Document completed Oct 21, 2026; ready for implementation planning.</div>
+              <div><strong>For curious techies:</strong> Local-first bridge reading per-repo VOICE.md briefings, discovering live agent capabilities at runtime, and refusing unsafe dual-writer delivery.</div>
+            </div>
+          </article>
+
+          <!-- Agent Space -->
+          <article class="project-card" id="proj-agentspace" data-cat="agents">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">12. Agent Space</h4>
+                <p class="project-pitch">A visual desktop canvas where AI agents, their tools, and their workspaces are visible objects.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-paused">Prototype (Paused) &bull; Sep 2, 2026</span>
+                <span class="badge badge-private" title="github.com/The-Agent-Corporation/agent-space">🔒 Private Repo</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Instead of hiding everything an AI does behind a scrolling chat box, Agent Space puts your project folders, agent workers, notes, and live outputs onto an infinite visual canvas. Agents can work freely inside their assigned folder, while anything that leaves the space requires explicit permission.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Builders who want to see and arrange multiple AI workers visually like a mission control desk.</div>
+              <div><strong>Current status:</strong> Multi-phase desktop prototype with Fly.io staging runbooks; paused since Sep 2, 2026 while Roscoe takes priority.</div>
+              <div><strong>For curious techies:</strong> Electron local-first spatial canvas in TypeScript with folder-bound worker agents and gated egress.</div>
+            </div>
+            <div class="project-links">
+              <span class="link-note">Repo: The-Agent-Corporation/agent-space (Private)</span>
+            </div>
+          </article>
+
+          <!-- Multi-Agent Review (Bonus Open-Source + Live Relay) -->
+          <article class="project-card" id="proj-mar" data-cat="agents">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">13. Multi-Agent Review &amp; Relay</h4>
+                <p class="project-pitch">Have multiple frontier AI models review every pull request and challenge each other's findings.</p>
+              </div>
+              <div class="badge-row">
+                <a class="badge badge-live" href="https://mar-relay.onrender.com" target="_blank" rel="noopener">● Live Relay</a>
+                <a class="badge badge-public" href="https://github.com/The-Agent-Corporation/multi-agent-review" target="_blank" rel="noopener">🔓 Public Repo (MIT)</a>
+              </div>
+            </div>
+            <p class="project-body">
+              Rather than trusting a single AI model to write and check its own code, Multi-Agent Review orchestrates different AI CLIs through a structured adversarial review protocol. Models inspect pull requests independently, flag bugs or over-complicated code, and report through a live webhook relay.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Teams that let AI write code and want automated, skeptical second opinions before merging.</div>
+              <div><strong>Current status:</strong> Open-source MIT repository and live Render webhook relay running across The Agent Corporation's repos.</div>
+              <div><strong>For curious techies:</strong> TypeScript orchestrator across vendor CLIs with a Node webhook relay deployed at mar-relay.onrender.com.</div>
+            </div>
+            <div class="project-links">
+              <a class="ext-link primary-link" href="https://github.com/The-Agent-Corporation/multi-agent-review" target="_blank" rel="noopener">
+                💻 View Public Code (The-Agent-Corporation/multi-agent-review) &rarr;
+              </a>
+              <a class="ext-link" href="https://mar-relay.onrender.com" target="_blank" rel="noopener">
+                🌐 Live Relay (mar-relay.onrender.com) &rarr;
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- CATEGORY 4: FAMILY & PERSONAL -->
+        <div class="category-group" data-group="personal">
+          <h3 class="category-banner">🏡 Family &amp; Personal Projects</h3>
+
+          <!-- Picture Life -->
+          <article class="project-card" id="proj-picture" data-cat="personal">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">14. Picture Life</h4>
+                <p class="project-pitch">Ingest decades of family photos and videos and organize them by who, what, when, and where.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-paused">Prototype (Paused) &bull; Aug 30, 2026</span>
+                <span class="badge badge-private" title="github.com/aaron-agent-corporation/picture-life">🔒 Private Repo</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Scans a massive family photo and video archive, detects faces, estimates age ranges, and gives family members an easy web app to tag people, places, and memories. Every tag or identity claim is stored with provenance so mistakes can always be undone cleanly.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Families with tens of thousands of scattered digital photos and scanned prints who want a searchable family history.</div>
+              <div><strong>Current status:</strong> Phase 3.5 signed off Aug 30, 2026; currently paused before full archive ingest.</div>
+              <div><strong>For curious techies:</strong> Python backend, Postgres + Alembic migrations, Procrastinate job queue, face embeddings, and a React annotation UI.</div>
+            </div>
+            <div class="project-links">
+              <span class="link-note">Repo: aaron-agent-corporation/picture-life (Private)</span>
+            </div>
+          </article>
+
+          <!-- SitterOS -->
+          <article class="project-card" id="proj-sitter" data-cat="personal">
+            <div class="project-header">
+              <div>
+                <h4 class="project-title">15. SitterOS</h4>
+                <p class="project-pitch">A friendly booking and calendar app for a pet or house sitter and the families they serve.</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge badge-paused">Built (Paused on Render) &bull; Aug 28, 2026</span>
+                <span class="badge badge-private" title="github.com/aaron-agent-corporation/sitteros">🔒 Private Repo</span>
+              </div>
+            </div>
+            <p class="project-body">
+              Families get an invite link, sign in with Apple or Google, fill out pet and home details, and request sitting dates on a visual calendar. The sitter manages invites, bookings, and family profiles in one place, with automatic Google Calendar sync and an iPhone app wrapper.
+            </p>
+            <div class="project-details">
+              <div><strong>Who it's for:</strong> Independent pet/house sitters and their client families who want something simpler than back-and-forth text threads.</div>
+              <div><strong>Current status:</strong> Built and working with iOS Capacitor shell and Render static site (sitteros.onrender.com, currently paused). Last update Aug 28, 2026.</div>
+              <div><strong>For curious techies:</strong> React + TypeScript + shadcn/ui on Supabase Auth/DB, wrapped for iOS with Capacitor.</div>
+            </div>
+            <div class="project-links">
+              <span class="link-note">Render URL: sitteros.onrender.com (currently paused) &bull; Repo: aaron-agent-corporation/sitteros (Private)</span>
+            </div>
+          </article>
+        </div>
+
+      </section>
+
+      <!-- Bonus Box: Also Running on Render & Open Source -->
+      <section class="box cloud-box" id="live-cloud">
+        <h2 class="box-header blue-header">Also Running on Render &amp; Open Source Extras</h2>
+        <p class="section-intro">
+          Beyond the main project repos above, these live services, relays, and open-source packages run across Aaron's workspaces:
+        </p>
+        <div class="cloud-grid">
+          <div class="cloud-item">
+            <div class="cloud-title">
+              <a href="https://github.com/aaron-agent-corporation/roscoe-companion" target="_blank" rel="noopener">Roscoe Companion</a>
+              <span class="badge badge-public">Public MIT</span>
+            </div>
+            <p>One self-hosted control room for Claude Code, Codex, and OpenCode sessions: see every live session, approve actions, and run agents on a schedule.</p>
+          </div>
+
+          <div class="cloud-item">
+            <div class="cloud-title">
+              <a href="https://github.com/aaron-agent-corporation/waypoint" target="_blank" rel="noopener">Waypoint</a>
+              <span class="badge badge-public">Public Repo</span>
+            </div>
+            <p>Postgres-backed durable workflow runtime for TypeScript where workflows are data manifests and human approval gates are first-class nodes.</p>
+          </div>
+
+          <div class="cloud-item">
+            <div class="cloud-title">
+              <a href="https://github.com/aaron-agent-corporation/openclaw" target="_blank" rel="noopener">OpenClaw &amp; Gateway</a>
+              <span class="badge badge-live">Live on Render</span>
+            </div>
+            <p>Personal AI assistant framework (<a href="https://openclaw-gateway-0g4j.onrender.com" target="_blank" rel="noopener">openclaw-gateway-0g4j.onrender.com</a>) and public fork.</p>
+          </div>
+
+          <div class="cloud-item">
+            <div class="cloud-title">
+              <a href="https://agentmail-relay.onrender.com" target="_blank" rel="noopener">AgentMail Relay</a>
+              <span class="badge badge-live">Live Service</span>
+            </div>
+            <p>Notification queue and email relay service running on Render (<a href="https://agentmail-relay.onrender.com" target="_blank" rel="noopener">agentmail-relay.onrender.com</a>).</p>
+          </div>
+
+          <div class="cloud-item">
+            <div class="cloud-title">
+              <a href="https://fantasy-drafter-x6en.onrender.com" target="_blank" rel="noopener">Fantasy Drafter</a>
+              <span class="badge badge-live">Live Service</span>
+            </div>
+            <p>Hosted fantasy football draft helper and observer service (<a href="https://fantasy-drafter-x6en.onrender.com" target="_blank" rel="noopener">fantasy-drafter-x6en.onrender.com</a>).</p>
+          </div>
+
+          <div class="cloud-item">
+            <div class="cloud-title">
+              <span>Agent Dashboards &amp; Kanban</span>
+              <span class="badge badge-live">Render Fleet</span>
+            </div>
+            <p>
+              Also deployed across workspaces:
+              <a href="https://firmvault-vibe-kanban.onrender.com" target="_blank" rel="noopener">FirmVault Vibe Kanban</a>,
+              <a href="https://paperclip-dashboard.onrender.com" target="_blank" rel="noopener">Paperclip Dashboard</a>, and
+              <a href="https://mission-control-jiye.onrender.com" target="_blank" rel="noopener">Mission Control</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Friends' Comments / Recent Activity Wall -->
+      <section class="box wall-box" id="wall">
+        <h2 class="box-header orange-header">Recent Ship Wall (Real October 2026 Milestones)</h2>
+        <p class="section-intro">Displaying <strong>6</strong> of <strong>100+</strong> recent commits &amp; milestones (Eastern Time):</p>
+
+        <div class="wall-list">
+          <div class="wall-post">
+            <div class="wall-author">
+              <div class="wall-avatar">⚖️</div>
+              <div class="wall-author-name">Roscoe Spine</div>
+              <div class="wall-date">Oct 22, 2026</div>
+            </div>
+            <div class="wall-body">
+              <strong>Merged PR #293 (Legal Memo Checkpoints):</strong> Added attorney approval gates for Kentucky PI legal memos so gap research and writing steps wait for human sign-off and never repeat dead runs. Over 100 PRs merged this month!
+            </div>
+          </div>
+
+          <div class="wall-post">
+            <div class="wall-author">
+              <div class="wall-avatar">🛡️</div>
+              <div class="wall-author-name">AI IT Agent</div>
+              <div class="wall-date">Oct 22, 2026</div>
+            </div>
+            <div class="wall-body">
+              <strong>First Working Code &amp; Spec v1:</strong> Stood up the Go machine agent, canonical fix catalog, macOS third-party protection checks, and Windows test PC handoff for the "AI IT Department in a Box" project.
+            </div>
+          </div>
+
+          <div class="wall-post">
+            <div class="wall-author">
+              <div class="wall-avatar">🧠</div>
+              <div class="wall-author-name">Memory Bot</div>
+              <div class="wall-date">Oct 22, 2026</div>
+            </div>
+            <div class="wall-body">
+              <strong>Conversational Memory System (#5):</strong> Completed live OpenRouter model bake-offs, wired spend-cap ledgers, and set Claude Haiku 5.5 as the default background thread summarizer.
+            </div>
+          </div>
+
+          <div class="wall-post">
+            <div class="wall-author">
+              <div class="wall-avatar">👆</div>
+              <div class="wall-author-name">PointSpeak &amp; VOICE Bridge</div>
+              <div class="wall-date">Oct 21, 2026</div>
+            </div>
+            <div class="wall-body">
+              <strong>Voice + Visual Direction:</strong> Updated PointSpeak's narration audio decoder for PyAV 15+ and finished the VOICE Bridge v1 Product Requirements Document for talking to multiple coding projects at once.
+            </div>
+          </div>
+
+          <div class="wall-post">
+            <div class="wall-author">
+              <div class="wall-avatar">🎛️</div>
+              <div class="wall-author-name">LimitSwitch Cloud</div>
+              <div class="wall-date">Oct 16, 2026</div>
+            </div>
+            <div class="wall-body">
+              <strong>Live on Render:</strong> Provisioned fresh persistent storage, migrated 37 API keys under owner authorization, and shipped single-use ticket delivery so cloud agents get keys safely.
+            </div>
+          </div>
+
+          <div class="wall-post">
+            <div class="wall-author">
+              <div class="wall-avatar">🏛️</div>
+              <div class="wall-author-name">Verdict Intelligence &amp; VoiceDocs</div>
+              <div class="wall-date">Oct 16, 2026</div>
+            </div>
+            <div class="wall-body">
+              <strong>Travel-Style Verdict Search &amp; Word Tracked Changes:</strong> Redesigned Jury Trial Search with a familiar travel-search layout and source-audited captions, and added Word automatic numbering + tracked-changes export to VoiceDocs.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Built for <strong>Aaron Whaley</strong> &bull; The Agent Corporation &bull; Prospect, KY &bull; October 2026
+    </p>
+    <p class="footer-sub">
+      Public-safe project directory verified directly from repository source code and git history. No client or case data is stored on this site.
+    </p>
+  </footer>
+
+  <script>
+    function setViewMode(mode) {
+      var body = document.body;
+      var btnMyspace = document.getElementById('btn-myspace');
+      var btnReader = document.getElementById('btn-reader');
+      if (mode === 'reader') {
+        body.classList.remove('mode-myspace');
+        body.classList.add('mode-reader');
+        btnReader.classList.add('active');
+        btnMyspace.classList.remove('active');
+      } else {
+        body.classList.remove('mode-reader');
+        body.classList.add('mode-myspace');
+        btnMyspace.classList.add('active');
+        btnReader.classList.remove('active');
+      }
+      try { localStorage.setItem('aaron_space_mode', mode); } catch (e) {}
+    }
+
+    function filterCategory(cat, btnEl) {
+      var buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      if (btnEl) btnEl.classList.add('active');
+
+      var groups = document.querySelectorAll('.category-group');
+      groups.forEach(function(g) {
+        if (cat === 'all' || g.getAttribute('data-group') === cat) {
+          g.style.display = '';
+        } else {
+          g.style.display = 'none';
+        }
+      });
+    }
+
+    function filterProjectsBySearch(query) {
+      var q = (query || '').trim().toLowerCase();
+      var cards = document.querySelectorAll('.project-card');
+      var groups = document.querySelectorAll('.category-group');
+
+      if (!q) {
+        cards.forEach(function(c) { c.style.display = ''; });
+        var activeBtn = document.querySelector('.filter-btn.active');
+        var activeCat = activeBtn ? activeBtn.getAttribute('data-cat') : 'all';
+        filterCategory(activeCat, activeBtn);
+        return;
+      }
+
+      groups.forEach(function(g) { g.style.display = ''; });
+      cards.forEach(function(c) {
+        var text = (c.innerText || c.textContent || '').toLowerCase();
+        c.style.display = text.indexOf(q) !== -1 ? '' : 'none';
+      });
+    }
+
+    function clearSearch() {
+      var input = document.getElementById('project-search');
+      if (input) {
+        input.value = '';
+        filterProjectsBySearch('');
+      }
+    }
+
+    (function init() {
+      if (window.location && window.location.origin && window.location.origin.indexOf('http') === 0) {
+        var el = document.getElementById('current-page-url');
+        if (el) el.textContent = window.location.origin;
+      }
+      try {
+        var saved = localStorage.getItem('aaron_space_mode');
+        if (saved === 'reader') setViewMode('reader');
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>
